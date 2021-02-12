@@ -1,0 +1,48 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+//MEDIA QUERY MANAER
+/*
+0-600px Phone
+600 -900px Tablet 
+900- 1200 Tablett landscap
+[1200 -1800] telas normais
+1800 +Big desktops
+
+/*
+-phone
+-tttab-port
+-tab-land
+-
+*/
+@mixin respond($breakpoint) {
+    //600px
+    @if $breakpoint == phone {
+        @media (max-width: 37.5em) {
+            @content;
+        }
+    }
+    //900px
+    @if $breakpoint == tab-port {
+        @media (max-width: 56.25em) {
+            @content;
+        }
+    }
+    //1200
+    @if $breakpoint == tab-land {
+        @media (max-width: 75em) {
+            @content;
+        }
+    }
+    //1800+
+    @if $breakpoint == big-desktop {
+        @media (min-width: 112.5em) {
+            @content;
+        }
+    }
+}
